@@ -1,4 +1,5 @@
-﻿using FoodOrderingService.Services;
+﻿using FoodOrderingService.Entities;
+using FoodOrderingService.Services;
 using System;
 using System.Linq;
 using System.Net;
@@ -11,12 +12,12 @@ namespace FoodOrderingService
           private bool _isRunning;
           private HttpListener _httpListener;
           public const string VERSION = "HTTP/1.1";
-          public const string NAME = "Kitchen";
+          public const string NAME = "FoodOrderingService";
 
-          public HTTPServer(int port)
+          public HTTPServer()
           {
                _httpListener = new HttpListener();
-               _httpListener.Prefixes.Add($"http://localhost:{port}/");
+               _httpListener.Prefixes.Add($"{Constants.FOOD_ORDERING_SERVICE_ADDRESS}/");
           }
 
           public void Start()
